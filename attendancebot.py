@@ -1,5 +1,6 @@
 import logging
 import pickle
+import os
 
 from telegram import Update
 from telegram.ext import Application, CallbackContext, CommandHandler
@@ -58,7 +59,7 @@ async def others_command(update: Update, context: CallbackContext.DEFAULT_TYPE) 
 
 def main() -> None:
     """Start the bot."""
-    application = Application.builder().token("TOKEN").build()
+    application = Application.builder().token(os.environ["ATT_BOT_TOKEN"]).build()
 
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("help", help_command))
